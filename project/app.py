@@ -1,5 +1,9 @@
 from argparse import ArgumentParser
 
+import sys
+sys.path.append("C:/Users/shrav/OneDrive/Desktop/UNT Lectures/UNT Jan-May 2024/5218 Deep Learning/Project/module0-shravanimamidala/")
+import minitorch
+
 import streamlit as st
 from interface.streamlit_utils import get_img_tag
 from interface.train import render_train_interface
@@ -60,7 +64,9 @@ if module_selection == "Module 0":
     PAGES["Module 0: Manual"] = render_run_manual_interface
 
 if module_selection == "Module 1":
-    from run_scalar import ScalarTrain
+    #from run_scalar import ScalarTrain
+    
+    from utils.run_scalar import ScalarTrain
     from show_expression_interface import render_show_expression
 
     def render_m1_sandbox():
