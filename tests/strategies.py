@@ -15,3 +15,6 @@ med_ints = integers(min_value=1, max_value=20)
 
 def assert_close(a: float, b: float) -> None:
     assert minitorch.operators.is_close(a, b), "Failure x=%f y=%f" % (a, b)
+
+def small_floats():
+    return floats(min_value=-1e6, max_value=1e6, allow_nan=False, allow_infinity=False)

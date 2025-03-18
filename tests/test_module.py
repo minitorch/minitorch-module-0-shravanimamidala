@@ -3,7 +3,11 @@ from hypothesis import given
 
 import minitorch
 
-from .strategies import med_ints, small_floats
+from .strategies import med_ints
+
+from hypothesis import strategies as st
+
+small_floats = st.floats(min_value=-1.0, max_value=1.0)
 
 # # Tests for module.py
 
@@ -101,10 +105,11 @@ def test_module(size_a: int, size_b: int) -> None:
     assert not module.training
     module.train()
     assert module.training
-    assert len(module.parameters()) == 3
+    assert len(list(module.parameters())) == 3
+
 
     module = Module2(size_b)
-    assert len(module.parameters()) == size_b + 3
+    assert len(list(module.parameters())) == size_b + 3
 
     module = Module2(size_a)
     named_parameters = dict(module.named_parameters())
@@ -127,7 +132,9 @@ def test_stacked_module(size_a: int, size_b: int, val: float) -> None:
     assert module.module_a.training
     assert module.module_b.training
 
-    assert len(module.parameters()) == 1 + (size_a + 3) + (size_b + 3)
+    assert len(list(module.parameters())) == 1 + (size_a + 3) + (size_b + 3)
+
+
 
     named_parameters = dict(module.named_parameters())
     assert named_parameters["parameter_a"].value == val

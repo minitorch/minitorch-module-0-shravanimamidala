@@ -1,5 +1,7 @@
 import networkx as nx
 from dataclasses import dataclass
+import sys
+sys.path.append("C:/Users/shrav/OneDrive/Desktop/UNT Lectures/UNT Jan-May 2024/5218 Deep Learning/Project/module0-shravanimamidala/")
 import minitorch
 
 if hasattr(minitorch, "Scalar"):
